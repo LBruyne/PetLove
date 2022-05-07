@@ -16,7 +16,7 @@ import Home from "./pages/home";
 import ErrorPage from "./pages/error";
 import UserPage from "./pages/user";
 import PetPage from "./pages/pet";
-import {happinessToLevel, UTC2Date} from "./api/constant";
+import {contractPet2Local, happinessToLevel, UTC2Date} from "./api/constant";
 
 const {Content} = Layout
 
@@ -49,8 +49,8 @@ const App = () => {
             time: new Date(),
             type: 1 // 1 is an event to click
         }],
-        defaultPet:{
-            birthday:'Not born!',
+        defaultPet:contractPet2Local({
+            createTime:1651900202000000000,
             level:'Pupil',
             id:"16514061131914830005",
             image:"http://www.yanziwoo.com/uploads/a9255a540810626068918cdf074db913.jpg",
@@ -58,8 +58,9 @@ const App = () => {
             price:100000n,
             happiness:123n,
             state:{notAdopted: null}
-        },
-        market:null
+        }),
+        market:null,
+        pet:null
     });
     return (
         <Layout>

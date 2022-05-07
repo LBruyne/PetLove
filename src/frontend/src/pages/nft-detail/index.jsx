@@ -8,11 +8,11 @@ import {estimatePrice} from "../../utils/price";
 import Input from "antd/es/input/Input";
 import appContext from "../../api/context";
 import {purchasePet} from "../../api/backendApi";
-import {formatPrincipal} from "../../utils/fstring";
+import {formatDate, formatPrincipal} from "../../utils/fstring";
 import {Principal} from "@dfinity/principal";
 
 const NFTDetailPage = () => {
-    const nft = useLocation().state.nft
+    let nft = useLocation().state.nft
     const name = nft.name,price= Number(nft.price), owner = nft.owner[0], level = nft.level, birthday = nft.birthday, id = nft.id, image= nft.image
     // const {name, price, owner, image, level,birthday} = props.nft
     const [isModalVisible, setModalVisible] = useState(false)
@@ -64,7 +64,7 @@ const NFTDetailPage = () => {
                             </div>
                             <div className='item'>
                                 <div className='attr'>Birthday</div>
-                                <div className='value'>{birthday}</div>
+                                <div className='value'>{formatDate(birthday)}</div>
                             </div>
                             <div className='item'>
                                 <div className='attr'>Number</div>

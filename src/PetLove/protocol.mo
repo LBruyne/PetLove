@@ -113,7 +113,7 @@ module Protocol {
             assert (userList != null);
             let (owner1, l1) = List.pop<Principal>(userList);
             let (owner2, l2) = List.pop<Principal>(userList);
-            (_unwrap(owner1), _unwrap(owner1))
+            (_unwrap(owner1), _unwrap(owner2))
         };
 
         public func getMate (user : Principal) : ?Principal {

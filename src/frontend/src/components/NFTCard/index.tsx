@@ -21,7 +21,6 @@ interface NFTCardProps {
 
 const NFTCard = (props: NFTCardProps) => {
     const {id, name, price, image} = props.nft
-    // console.log(price)
     const owner = props.nft.owner[0]
     return (
         <div className='nftcard'>

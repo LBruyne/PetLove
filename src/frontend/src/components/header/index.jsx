@@ -9,13 +9,13 @@ import appContext from "../../api/context";
 import {getBackendActor, getTokenActor} from "../../api/getActor";
 import {getRandomName, host, reducerOperation} from "../../api/constant";
 import {Link} from "react-router-dom";
-import {getAllRequests, getUserProfile, mint} from "../../api/backendApi";
+import {getAllRequests, getPetProfile, getUserProfile, mint} from "../../api/backendApi";
 import user from "../../pages/user";
 
 const {Header} = Layout
 
 const HeaderComp = () => {
-    const context= useContext(appContext)
+    const context = useContext(appContext)
     return (
         <Header className='header'>
             <div className='logo'>
@@ -29,7 +29,7 @@ const HeaderComp = () => {
                 <Menu.Item key='3'><a href='/#/test'>Test</a></Menu.Item>
             </Menu>
             <div className='state'>
-                { context.state.login ?
+                {context.state.login ?
                     <>
                         <Link to={{
                             pathname: `/user`,
@@ -51,16 +51,37 @@ const HeaderComp = () => {
                                 let tokenActor = await getTokenActor()
                                 let principal = await window.ic.plug.getPrincipal()
                                 let userProfile = await getUserProfile(backendActor)
-                                console.log(userProfile)
-                                userProfile = {
-                                    'matePrincipal':''
+                                let pet=context.state.defaultPet
+                                if (userProfile.length) {
+                                    let tp = userProfile[0]
+                                    userProfile = {
+                                        ...tp,
+                                        id:tp.id.toText(),
+                                        matePrincipal:tp.mate[0].toText(),
+                                        pet:tp.tokenId[0]
+                                    }
+                                    pet = (await getPetProfile(backendActor,userProfile.pet))[0]
+                                } else {
+                                    userProfile = {
+                                        balance:50n,
+                                        id:principal.toText(),
+                                        matePrincipal: '',
+                                        pet:''
+                                    }
                                 }
+
                                 let requests = await getAllRequests(backendActor)
                                 console.log(requests)
                                 await mint(backendActor);
-                                // console.log("userProfile:\t",userProfile)
-
-                                context.dispatch({'type':reducerOperation.login,backendActor,tokenActor,principal,userProfile,requests})
+                                context.dispatch({
+                                    'type': reducerOperation.login,
+                                    backendActor,
+                                    tokenActor,
+                                    principal,
+                                    userProfile,
+                                    requests,
+                                    pet
+                                })
                             }}
                         />
                     </>

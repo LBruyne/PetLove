@@ -16,11 +16,12 @@ const reducer =  (state, action) => {
                 ...state,
                 backendActor: action.backendActor,
                 tokenActor: action.tokenActor,
-                userPrincipal:"0x"+action.principal.toHex(),
+                userPrincipal:action.principal.toText(),
                 userProfile: action.userProfile,
                 login:true,
-                defaultPet:contractPet2Local(state.defaultPet),
-                event:contractEvent2local(action.requests)
+                // defaultPet:contractPet2Local(state.defaultPet),
+                event:contractEvent2local(action.requests),
+                pet:contractPet2Local(action.pet)
             };
             break;
         case reducerOperation.getUserProfile:
@@ -33,6 +34,13 @@ const reducer =  (state, action) => {
             newState={
                 ...state,
                 market:action.market.map(ele => contractPet2Local(ele))
+            }
+            break;
+        case reducerOperation.updatePet:
+            debugger
+            newState={
+                ...state,
+                pet:action.pet
             }
             break;
         default:

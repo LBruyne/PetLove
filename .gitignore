@@ -8,6 +8,8 @@ node_modules/
 dist/
 src/declarations/frontend
 src/declarations/PetLove
+src/declarations/PetLove_assets
+src/declarations/token
 
 # DS_Store
 .DS_Store
@@ -17,3 +19,4 @@ src/declarations/PetLove
 
 # generated when deploying to ic
 canister_ids.json
+/src/declarations/

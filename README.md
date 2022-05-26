@@ -1,13 +1,17 @@
 # PetLove
 
-[[OUR WEBSITE](https://s6akf-saaaa-aaaai-abaoq-cai.raw.ic0.app/)]
-[[VIDEO DEMO](https://www.youtube.com/watch?v=KSpNN_Lbqf0)]
+[[OUR WEBSITE of Version 1 ](https://s6akf-saaaa-aaaai-abaoq-cai.raw.ic0.app)]
+[[VIDEO DEMO of Version 2](https://www.youtube.com/watch?v=ZkZOKoazH1M)]
 
-![logo image](./images/1.png)
+![logo image](./assets/image.png)
 
 ## Introduction
-PetLove Application in Internet Computer Platform for Dfinity Hackthon 2021. The app is deployed on the IC chain for demonstration.
-You can visit it [here](https://s6akf-saaaa-aaaai-abaoq-cai.raw.ic0.app/).
+PetLove Application in Internet Computer Platform. 
+
+This is a repo for PetLove v2. This version will be deployed in IC platform in next month.
+
+The app is deployed on the IC platform for demonstration.
+You can visit the v1 of PetLove [here](https://s6akf-saaaa-aaaai-abaoq-cai.raw.ic0.app/).
 
 The project is submitted using the HackerLink Account: https://hackerlink.io/hacker/33614.
 ## Architecture
